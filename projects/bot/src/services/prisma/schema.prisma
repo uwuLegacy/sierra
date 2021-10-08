@@ -1,0 +1,29 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_AUTH")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id String @id @default(cuid())
+
+  dsc_id String? @unique
+
+  econ_account Account? @relation(fields: [econ_accid], references: [id])
+  econ_accid   String?  @unique
+}
+
+model Account {
+  id String @id @default(cuid())
+
+  wallet Int @default(0)
+  bank   Int @default(0)
+
+  attached_user User?
+}

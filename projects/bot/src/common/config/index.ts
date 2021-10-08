@@ -20,6 +20,10 @@ const intents = [
 ];
 
 const config: ISierraConfig = {
+    environment: {
+        development: process.env.NODE_ENV !== 'production',
+    },
+
     client: {
         intents,
     },
