@@ -2,6 +2,7 @@ import { LogLevel } from '@ogma/common';
 import { Intents } from 'discord.js';
 import { ISierraConfig } from './config.interface';
 import git from '@nice-labs/git-rev';
+import path from 'path';
 
 const intents = [
     Intents.FLAGS.GUILDS,
@@ -42,7 +43,7 @@ const config: ISierraConfig = {
         owners: ['392264789360902156'],
         defaultPrefix: IS_DEVENV ? '$' : ';',
 
-        baseUserDirectory: './src/modules',
+        // baseUserDirectory: path.resolve(process.cwd(), 'src/modules'),
         caseInsensitiveCommands: true,
         caseInsensitivePrefixes: true,
 
