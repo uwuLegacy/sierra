@@ -1,3 +1,5 @@
+import './client/setup';
+
 import { NestFactory } from '@nestjs/core';
 import { OgmaService } from '@ogma/nestjs-module';
 import { AppModule } from './app.module';
@@ -7,6 +9,7 @@ import { PrismaService } from './services/prisma/prisma.service';
 async function bootstrap() {
     const app = await NestFactory.createApplicationContext(AppModule, {
         logger: false,
+        bufferLogs: true,
     });
 
     const logger: OgmaService = app.get<OgmaService>(OgmaService);

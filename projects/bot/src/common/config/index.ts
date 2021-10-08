@@ -2,7 +2,7 @@ import { LogLevel } from '@ogma/common';
 import { Intents } from 'discord.js';
 import { ISierraConfig } from './config.interface';
 import git from '@nice-labs/git-rev';
-import path from 'path';
+import { join } from 'path';
 
 const intents = [
     Intents.FLAGS.GUILDS,
@@ -22,15 +22,16 @@ const intents = [
     Intents.FLAGS.DIRECT_MESSAGE_TYPING,
 ];
 
-const IS_DEVENV = process.env.NODE_ENV !== 'production';
-const VERSION = `0.1.0${
+export const IS_DEVENV = process.env.NODE_ENV !== 'production';
+export const VERSION = `0.1.0${
     process.env.NODE_ENV !== 'production'
         ? `-dev.${git.commitHash(true, 'HEAD')}` // Go 2 directories up cause this is a monorepo
         : ''
 }`;
 
-const config: ISierraConfig = {
+export const config: ISierraConfig = {
     application: 'Sierra',
+    owners: ['392264789360902156'],
 
     environment: {
         development: IS_DEVENV,
@@ -40,10 +41,9 @@ const config: ISierraConfig = {
 
     client: {
         intents,
-        owners: ['392264789360902156'],
         defaultPrefix: IS_DEVENV ? '$' : ';',
 
-        // baseUserDirectory: path.resolve(process.cwd(), 'src/modules'),
+        baseUserDirectory: join(__dirname, '../../modules'),
         caseInsensitiveCommands: true,
         caseInsensitivePrefixes: true,
 

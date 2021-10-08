@@ -3,7 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { OgmaModule } from '@ogma/nestjs-module';
 import { ClientModule } from 'src/client/client.module';
 import { OgmaModuleConfig } from 'src/services/ogma/ogma.config';
-import { PrismaService } from 'src/services/prisma/prisma.service';
+import { PrismaModule } from 'src/services/prisma/prisma.module';
 import config from '../config';
 
 export const AppImports: ModuleMetadata['imports'] = [
@@ -15,6 +15,6 @@ export const AppImports: ModuleMetadata['imports'] = [
         useClass: OgmaModuleConfig,
         imports: [ConfigModule],
     }),
-    PrismaService,
+    PrismaModule,
     ClientModule,
 ];

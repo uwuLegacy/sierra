@@ -1,9 +1,7 @@
 import { ClientOptions } from 'discord.js';
 import { LogLevel } from '@ogma/common';
 
-export interface ClientConfig extends ClientOptions {
-    owners: string[];
-}
+export interface ClientConfig extends ClientOptions {}
 
 export interface EnvironmentConfig {
     development: boolean;
@@ -13,6 +11,7 @@ export interface EnvironmentConfig {
 
 export interface ISierraConfig {
     application: string;
+    owners: string[];
 
     environment: EnvironmentConfig;
     client: ClientConfig;
