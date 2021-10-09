@@ -2,13 +2,14 @@ import { send } from '@sapphire/plugin-editable-commands';
 import { ApplyOptions } from '@sapphire/decorators';
 import { Message } from 'discord.js';
 import { SierraCommand } from 'src/common/structures/Command';
+import { SubCommandPluginCommand } from '@sapphire/plugin-subcommands';
 
-ApplyOptions<SierraCommand.Options>({
+ApplyOptions<SubCommandPluginCommand.Options>({
     aliases: ['latency'],
     description: 'Gets latency',
     detailedDescription: 'Get the bot latency',
 });
-export class PingCommand extends SierraCommand {
+export class PingCommand extends SubCommandPluginCommand {
     public async run(
         message: Message,
         args: SierraCommand.Args,

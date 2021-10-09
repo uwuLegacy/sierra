@@ -4,13 +4,15 @@ import { Message, MessageEmbed } from 'discord.js';
 import { VERSION } from 'src/common/config';
 import { SierraCommand } from 'src/common/structures/Command';
 import { cutText } from '@sapphire/utilities';
+import { SubCommandPluginCommand } from '@sapphire/plugin-subcommands';
+import { send } from '@sapphire/plugin-editable-commands';
 
-@ApplyOptions<SierraCommand.Options>({
+@ApplyOptions<SubCommandPluginCommand.Options>({
     aliases: ['information'],
     description: 'Information about the bot',
     detailedDescription: 'Get information about the bot',
 })
-export class InfoCommand extends SierraCommand {
+export class InfoCommand extends SubCommandPluginCommand {
     public async run(
         message: Message,
         args: SierraCommand.Args,
@@ -31,6 +33,6 @@ export class InfoCommand extends SierraCommand {
                 ),
             );
 
-        return message.channel.send('');
+        return send(message, { embeds: [embed] });
     }
 }
