@@ -10,6 +10,8 @@ import { Type } from '@sapphire/type';
 import { codeBlock, isThenable } from '@sapphire/utilities';
 import { inspect } from 'util';
 import { send } from '@sapphire/plugin-editable-commands';
+import { PrismaService } from 'src/services/prisma/prisma.service';
+import { Inject, Injectable } from '@nestjs/common';
 
 @ApplyOptions<SubCommandPluginCommand.Options>({
     aliases: ['run', 'exec'],

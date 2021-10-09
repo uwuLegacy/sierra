@@ -8,7 +8,6 @@ import { PrismaService } from './services/prisma/prisma.service';
 
 async function bootstrap() {
     const app = await NestFactory.createApplicationContext(AppModule, {
-        logger: false,
         bufferLogs: true,
     });
 

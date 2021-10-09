@@ -19,12 +19,15 @@ export class InfoCommand extends SubCommandPluginCommand {
         context: SierraCommand.Context,
     ) {
         const embed = new MessageEmbed()
-            .setTitle('information')
+            .setTitle('Information')
             .setColor('RANDOM')
             .setDescription(
                 cutText(
                     [
                         `Sierra v${VERSION}`,
+                        'A minimalistic Discord bot for server administration',
+                        '',
+                        'https://github.com/uwuLegacy/sierra',
                         `Running Node.JS ${process.version}, Sapphire ${version}`,
                     ]
                         .filter((p) => p !== undefined)

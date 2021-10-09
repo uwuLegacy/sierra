@@ -23,7 +23,7 @@ const intents = [
 ];
 
 export const IS_DEVENV = process.env.NODE_ENV !== 'production';
-export const VERSION = `0.1.0${
+export const VERSION = `0.2.0${
     process.env.NODE_ENV !== 'production'
         ? `-dev.${git.commitHash(true, 'HEAD')}` // Go 2 directories up cause this is a monorepo
         : ''
