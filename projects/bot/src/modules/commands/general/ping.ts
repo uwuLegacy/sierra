@@ -1,4 +1,4 @@
-import { send } from '.pnpm/@skyra+editable-commands@2.1.0/node_modules/@skyra/editable-commands';
+import { send } from '@sapphire/plugin-editable-commands';
 import { ApplyOptions } from '@sapphire/decorators';
 import { Message } from 'discord.js';
 import { SierraCommand } from 'src/common/structures/Command';
