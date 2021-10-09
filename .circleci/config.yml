@@ -1,0 +1,21 @@
+version: 2.1
+executors:
+  my-custom-executor:
+    docker:
+      - image: cimg/node:current
+      
+jobs:
+  build:
+    environment:
+      NODE_ENV: development
+    executor: my-custom-executor
+    steps:
+      - checkout
+      - run: |
+          node common/scripts/install-run-rush.js install
+          node common/scripts/install-run-rush.js build
+
+workflows:
+  my-custom-workflow:
+    jobs:
+      - build
