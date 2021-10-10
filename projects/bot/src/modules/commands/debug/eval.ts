@@ -5,7 +5,7 @@ import {
     SubCommandPluginCommand,
     SubCommandPluginCommandOptions,
 } from '@sapphire/plugin-subcommands';
-import { Message } from 'discord.js';
+import { Message } from 'src/common/types/discord';
 import { Type } from '@sapphire/type';
 import { codeBlock, isThenable } from '@sapphire/utilities';
 import { inspect } from 'util';
@@ -14,17 +14,19 @@ import { PrismaService } from 'src/services/prisma/prisma.service';
 import { Inject, Injectable } from '@nestjs/common';
 
 @ApplyOptions<SubCommandPluginCommand.Options>({
-    aliases: ['run', 'exec'],
+    aliases: ['run', 'exec', 'evaluate', 'execute'],
     description: 'Evaluate JS code',
     preconditions: ['OwnerOnly'],
     flags: ['async', 'hidden', 'silent', 's', 'showHidden'],
     options: ['depth'],
 })
+@Injectable()
 export class EvalCommand extends SubCommandPluginCommand {
     constructor(
         context: PieceContext,
         options: SubCommandPluginCommandOptions,
-        private readonly loggerService: OgmaService,
+        @Inject() private readonly loggerService: OgmaService,
+        @Inject() private readonly prismaService: PrismaService,
     ) {
         super(context, options);
     }
@@ -67,7 +69,8 @@ export class EvalCommand extends SubCommandPluginCommand {
         // Placeholders for evaluation
         const msg = message;
         const client = message.client;
-        const logger = this.loggerService;
+        const logger = message.client.consoleLogger;
+        const prisma = this.prismaService;
 
         let success = true;
         let result = null;

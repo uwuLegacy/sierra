@@ -3,7 +3,6 @@ import { Args, CommandContext, UserError } from '@sapphire/framework';
 import { send } from '@sapphire/plugin-editable-commands';
 import { SubCommandPluginCommand } from '@sapphire/plugin-subcommands';
 import { Message, TextChannel } from 'discord.js';
-import { Result } from 'lexure';
 
 @ApplyOptions<SubCommandPluginCommand.Options>({
     aliases: ['channels', 'chnl', 'chl', 'chn'],

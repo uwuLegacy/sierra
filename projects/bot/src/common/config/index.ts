@@ -41,6 +41,7 @@ export const config: ISierraConfig = {
 
     client: {
         intents,
+        shards: 'auto',
         defaultPrefix: IS_DEVENV ? '$' : ';',
 
         baseUserDirectory: join(__dirname, '../../modules'),
