@@ -1,0 +1,21 @@
+version: 2.1
+executors:
+    exec-node16:
+        docker:
+            - image: cimg/node:current
+
+jobs:
+    build:
+        environment:
+            NODE_ENV: development
+        executor: exec-node16
+        steps:
+            - checkout
+            - run: |
+                  node common/scripts/install-run-rush.js install
+                  node common/scripts/install-run-rush.js build
+
+workflows:
+    flow-build:
+        jobs:
+            - build
