@@ -1,5 +1,5 @@
 import { ApplyOptions } from '@sapphire/decorators';
-import { version } from '@sapphire/framework';
+import { Args, CommandContext, version } from '@sapphire/framework';
 import { Message, MessageEmbed } from 'discord.js';
 import { VERSION } from 'src/common/config';
 import { SierraCommand } from 'src/common/structures/Command';
@@ -13,11 +13,7 @@ import { send } from '@sapphire/plugin-editable-commands';
     detailedDescription: 'Get information about the bot',
 })
 export class InfoCommand extends SubCommandPluginCommand {
-    public async run(
-        message: Message,
-        args: SierraCommand.Args,
-        context: SierraCommand.Context,
-    ) {
+    public async run(message: Message, args: Args, context: CommandContext) {
         const embed = new MessageEmbed()
             .setTitle('Information')
             .setColor('RANDOM')
